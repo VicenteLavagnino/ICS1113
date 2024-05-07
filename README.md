@@ -55,19 +55,19 @@ python3 main.py
 
 /proyecto
 │
-├── main.py         # Script principal que ejecuta el modelo de optimización.
-├── model.py        # Script donde se instancia el modelo de optimización.
-├── parameters.py   # Script donde se instancian los parametros necesarios para el modelo.
-├── helpers.py      # Scripts auxiliares con funciones adicionales.
+├── main.py # Script principal que ejecuta el modelo de optimización.
+├── model.py # Script donde se instancia el modelo de optimización.
+├── parameters.py # Script donde se instancian los parámetros necesarios para el modelo.
+├── helpers.py # Scripts auxiliares con funciones adicionales.
 │
 ├── source/
-│   └── datos.csv   # Datos necesarios para ejecutar el modelo.
+│ └── datos.csv # Datos necesarios para ejecutar el modelo.
 │
 ├── output/
-│   └── AAAAA.csv   # AAAAA
+│ └── AAAAA.csv # Archivo de salida con resultados (nombre genérico, reemplaza según necesidad).
 │
-├── requirements.txt     # Dependencias del proyecto.
-└── README.md            # Documentación del proyecto.
+├── requirements.txt # Dependencias del proyecto.
+└── README.md # Documentación del proyecto.
 
 
 
