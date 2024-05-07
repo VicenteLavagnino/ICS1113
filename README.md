@@ -53,6 +53,7 @@ python3 main.py
 
 ## Estructura del código
 
+```bash
 /proyecto
 │
 ├── main.py # Script principal que ejecuta el modelo de optimización.
@@ -68,6 +69,7 @@ python3 main.py
 │
 ├── requirements.txt # Dependencias del proyecto.
 └── README.md # Documentación del proyecto.
+```
 
 
 
