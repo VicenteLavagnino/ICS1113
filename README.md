@@ -30,7 +30,7 @@ La implementación de este modelo no solo mejora la operación logística de la 
 
 ## Se asume que:
 
-- Se tiene instalado gurobi y se cuenta con la licensia correspondiente.
+- Se tiene instalado gurobi y se cuenta con la licencia correspondiente.
 - Se usa Python 3.12.2 o posteriores
 
 
