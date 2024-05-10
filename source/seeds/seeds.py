@@ -108,3 +108,5 @@ df_tiene_preferencia.index = df_preferencias.index  # Asegurando que los índice
 
 # Generar el archivo CSV
 df_tiene_preferencia.to_csv("tiene_preferencia_profesores.csv", index=True)
+
+print("Se han generado los archivos CSV necesarios para la semilla.")
