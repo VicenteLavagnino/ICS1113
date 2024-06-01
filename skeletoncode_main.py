@@ -1,31 +1,13 @@
 import gurobipy as gp
 from gurobipy import GRB
 import pandas as pd
+from parametros import get_data
+
+# Cargar datos desde parametros.py
+A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = get_data()
 
 # Crear el modelo
 model = gp.Model("Fundacion_Atrevete")
-
-# Datos de ejemplo (a reemplazar con los datos reales)
-# Distancias entre profesores y bloques
-Jp_b = {}  # {(profesor, bloque): distancia}
-
-# Cantidad de profesores necesarios por ramo en cada bloque
-Qb_r = {}  # {(bloque, ramo): cantidad}
-
-# Preferencias de los profesores para ciertos bloques
-Fp_b = {}  # {(profesor, bloque): 1 o 0}
-
-# Parámetros adicionales
-Mp = {}  # {profesor: 1 o 0} (si puede manejar)
-Dp_r = {}  # {(profesor, ramo): 1 o 0} (si se postuló)
-L = 0.8  # Fracción mínima de profesores asignados a bloques preferidos
-
-# Conjuntos
-A = [...]  # Conjunto de autos
-P = [...]  # Conjunto de profesores
-B = [...]  # Conjunto de bloques
-R = [...]  # Conjunto de ramos
-I = [0, 1, 2, 3, 4]  # Conjunto de asientos en un auto
 
 # Variables de decisión
 Xa = model.addVars(A, vtype=GRB.BINARY, name="Xa")
@@ -39,8 +21,8 @@ Ua_b_p = model.addVars(A, B, P, vtype=GRB.BINARY, name="Ua_b_p")
 
 # Función objetivo
 model.setObjective(
-    gp.quicksum(Sa_p1_p2_i[a, p1, p2, i] * Ep1_p2[p1, p2] for a in A for p1 in P for p2 in P for i in I[:-1]) +
-    gp.quicksum(Ua_b_p[a, b, p] * Jp_b[p, b] for a in A for b in B for p in P),
+    gp.quicksum(Sa_p1_p2_i[a, p1, p2, i] * Ep1_p2[(p1, p2)] for a in A for p1 in P for p2 in P for i in I[:-1] if (p1, p2) in Ep1_p2) +
+    gp.quicksum(Ua_b_p[a, b, p] * Jp_b[(p, b)] for a in A for b in B for p in P if (p, b) in Jp_b),
     GRB.MINIMIZE
 )
 
