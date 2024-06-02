@@ -1,0 +1,17 @@
+\ Model Fundacion_Atrevete_copy
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Minimize
+ 
+Subject To
+ Restriccion7_18: Yp_r[18,0] + Yp_r[18,1] + Yp_r[18,2] + Yp_r[18,3]
+   + Yp_r[18,4] + Yp_r[18,5] = 1
+ Restriccion8_18_0: Yp_r[18,0] <= 0
+ Restriccion8_18_1: Yp_r[18,1] <= 0
+ Restriccion8_18_2: Yp_r[18,2] <= 0
+ Restriccion8_18_3: Yp_r[18,3] <= 0
+ Restriccion8_18_4: Yp_r[18,4] <= 0
+ Restriccion8_18_5: Yp_r[18,5] <= 0
+Bounds
+Binaries
+ Yp_r[18,0] Yp_r[18,1] Yp_r[18,2] Yp_r[18,3] Yp_r[18,4] Yp_r[18,5]
+End

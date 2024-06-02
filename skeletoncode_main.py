@@ -3,7 +3,7 @@ from gurobipy import GRB
 import pandas as pd
 from parameters import get_data
 
-# Cargar datos desde parametros.py
+# Cargar datos desde parameters.py
 A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = get_data()
 
 # Crear el modelo
@@ -27,7 +27,6 @@ model.setObjective(
 )
 
 # Restricciones
-
 # 1. Cada auto tiene a lo más un profesor en cada asiento
 for a in A:
     for i in I:
@@ -106,19 +105,28 @@ for a in range(1, len(A)):
 # Optimizar el modelo
 model.optimize()
 
-# Imprimir resultados
-if model.status == GRB.OPTIMAL:
-    print("Solución óptima encontrada.")
-    # Imprimir o guardar los resultados en un archivo
-else:
-    print("No se encontró una solución óptima.")
+# Verificar factibilidad del modelo y manejar la inviabilidad
+if model.status == GRB.INFEASIBLE:
+    print("El modelo es inviable. Calculando IIS para diagnosticar...")
+    model.computeIIS()
+    model.write("model.ilp")  # Exportar el modelo a un archivo para análisis
 
-# Guardar resultados en un archivo
-results = []
-for a in A:
-    for p in P:
-        for i in I:
-            if Ta_p_i[a, p, i].X > 0.5:
-                results.append((a, p, i, Ta_p_i[a, p, i].X))
-df_results = pd.DataFrame(results, columns=["Auto", "Profesor", "Asiento", "Asignado"])
-df_results.to_csv("resultados.csv", index=False)
+    with open("infeasibility_report.txt", "w") as f:
+        f.write("IIS Report:\n")
+        for c in model.getConstrs():
+            if c.IISConstr:
+                f.write(f"{c.constrName}\n")
+else:
+    if model.status == GRB.OPTIMAL:
+        print("Solución óptima encontrada.")
+        # Guardar resultados en un archivo
+        results = []
+        for a in A:
+            for p in P:
+                for i in I:
+                    if Ta_p_i[a, p, i].X > 0.5:
+                        results.append((a, p, i, Ta_p_i[a, p, i].X))
+        df_results = pd.DataFrame(results, columns=["Auto", "Profesor", "Asiento", "Asignado"])
+        df_results.to_csv("resultados.csv", index=False)
+    else:
+        print("No se encontró una solución óptima o el estado del modelo no es óptimo.")
