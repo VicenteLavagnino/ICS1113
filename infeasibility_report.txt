@@ -1,8 +1,0 @@
-IIS Report:
-Restriccion7_18
-Restriccion8_18_0
-Restriccion8_18_1
-Restriccion8_18_2
-Restriccion8_18_3
-Restriccion8_18_4
-Restriccion8_18_5

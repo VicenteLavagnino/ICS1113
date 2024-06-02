@@ -64,7 +64,14 @@ for p in P:
         model.addConstr(Yp_r[p, r] <= Dp_r[p, r], name=f"Restriccion8_{p}_{r}")
 
 # 9. A cada bloque debe llegar la cantidad de profesores que se pidieron por ramo
-
+for a in A:
+    for b in B:
+        for p in P:
+            for r in R:
+                model.addConstr(Za_b_p_r[a, b , p , r] <= gp.quicksum(Ta_p_i[a, p, i] for i in I), name=f"Restriccion9.1_{a}_{b}_{p}_{r}")
+                model.addConstr(Za_b_p_r[a, b , p , r] <= Wa_b[a, b], name=f"Restriccion9.2_{a}_{b}_{p}_{r}")
+                model.addConstr(Za_b_p_r[a, b , p , r] <= Yp_r[p, r], name=f"Restriccion9.3_{a}_{b}_{p}_{r}")
+                model.addConstr(Wa_b[a, b] + Yp_r[p, r] + gp.quicksum(Ta_p_i[a, p, i] for i in I) <= Za_b_p_r[a, b, p, r] + 2, name=f"Restriccion9.4_{a}_{b}_{p}_{r}")
 
 for b in B:
     for r in R:
@@ -97,8 +104,8 @@ for a in A:
             model.addConstr(Wa_b[a, b] + gp.quicksum(Ha_p_i[a, p, i] for i in range(4)) <= Ua_b_p[a, b, p] + 1, name=f"Restriccion12_4_{a}_{b}_{p}")
 
 # 13. Asegurar que al menos un L% de los profesores con preferencia sean asignados a un auto que vaya a un bloque preferido
-for b in B:
-    model.addConstr(gp.quicksum(Za_b_p_r[a, b, p, r] * Fp_b[p, b] for a in A for p in P for r in R) >= L * gp.quicksum(Vp[p] for p in P), name=f"Restriccion13_{b}")
+#for b in B:
+    #model.addConstr(gp.quicksum(Za_b_p_r[a, b, p, r] * Fp_b[p, b] for a in A for p in P for r in R) >= L * gp.quicksum(Vp[p] for p in P), name=f"Restriccion13_{b}")
 
 # 14. Cada auto solo puede ser activado si el auto anterior fue activado
 #for a in range(1, len(A)):

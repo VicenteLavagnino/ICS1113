@@ -10,7 +10,7 @@ q_profesor_ramo = pd.read_csv('source/seeds/Q-profesor-ramo.csv', header=0, inde
 tiene_preferencia_profesores = pd.read_csv('source/seeds/tiene_preferencia_profesores.csv', header=0, index_col=0)
 
 # Verificar que no haya valores NaN en los datos de entrada
-
+'''
 print(e_profesor_profesor.isna().sum())
 print(j_profesor_bloque.isna().sum())
 print(postulaciones_profesores_ramos.isna().sum())
@@ -18,6 +18,7 @@ print(preferencias_profesores_bloques.isna().sum())
 print(puede_manejar_profesores.isna().sum())
 print(q_profesor_ramo.isna().sum())
 print(tiene_preferencia_profesores.isna().sum())
+'''
 
 
 # Rellenar NaN con un valor específico (e.g., 0)
