@@ -64,6 +64,8 @@ for p in P:
         model.addConstr(Yp_r[p, r] <= Dp_r[p, r], name=f"Restriccion8_{p}_{r}")
 
 # 9. A cada bloque debe llegar la cantidad de profesores que se pidieron por ramo
+
+
 for b in B:
     for r in R:
         model.addConstr(gp.quicksum(Za_b_p_r[a, b, p, r] for a in A for p in P) == Qb_r[b, r], name=f"Restriccion9_{b}_{r}")
@@ -99,8 +101,8 @@ for b in B:
     model.addConstr(gp.quicksum(Za_b_p_r[a, b, p, r] * Fp_b[p, b] for a in A for p in P for r in R) >= L * gp.quicksum(Vp[p] for p in P), name=f"Restriccion13_{b}")
 
 # 14. Cada auto solo puede ser activado si el auto anterior fue activado
-for a in range(1, len(A)):
-    model.addConstr(Xa[a] <= Xa[a-1], name=f"Restriccion14_{a}")
+#for a in range(1, len(A)):
+    #model.addConstr(Xa[a] <= Xa[a-1], name=f"Restriccion14_{a}")
 
 # Optimizar el modelo
 model.optimize()

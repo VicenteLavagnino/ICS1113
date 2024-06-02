@@ -10,6 +10,7 @@ q_profesor_ramo = pd.read_csv('source/seeds/Q-profesor-ramo.csv', header=0, inde
 tiene_preferencia_profesores = pd.read_csv('source/seeds/tiene_preferencia_profesores.csv', header=0, index_col=0)
 
 # Verificar que no haya valores NaN en los datos de entrada
+
 print(e_profesor_profesor.isna().sum())
 print(j_profesor_bloque.isna().sum())
 print(postulaciones_profesores_ramos.isna().sum())
@@ -45,7 +46,7 @@ Qb_r = {(i, j): int(q_profesor_ramo.iat[i, j]) for i in B for j in R}
 Vp = {i: int(tiene_preferencia_profesores.iat[i, 0]) for i in P}
 
 # Parámetro adicional
-L = 0.8
+L = 0.0
 
 # Exportar conjuntos y parámetros
 def get_data():
