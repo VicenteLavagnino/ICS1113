@@ -1,7 +1,7 @@
 import gurobipy as gp
 from gurobipy import GRB
 import pandas as pd
-from parametros import get_data
+from parameters import get_data
 
 # Cargar datos desde parametros.py
 A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = get_data()
