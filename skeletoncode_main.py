@@ -98,10 +98,10 @@ for a in A:
 for a in A:
     for b in B:
         for p in P:
-            model.addConstr(Ua_b_p[a, b, p] <= Ta_p_i[a, p, 4] + gp.quicksum(Ha_p_i[a, p, i] for i in range(4)), name=f"Restriccion12_1_{a}_{b}_{p}")
+            model.addConstr(Ua_b_p[a, b, p] <= Ta_p_i[a, p, 4] + gp.quicksum(Ha_p_i[a, p, i] for i in range(0, 4)), name=f"Restriccion12_1_{a}_{b}_{p}")
             model.addConstr(Ua_b_p[a, b, p] <= Wa_b[a, b], name=f"Restriccion12_2_{a}_{b}_{p}")
             model.addConstr(Wa_b[a, b] + Ta_p_i[a, p, 4] <= Ua_b_p[a, b, p] + 1, name=f"Restriccion12_3_{a}_{b}_{p}")
-            model.addConstr(Wa_b[a, b] + gp.quicksum(Ha_p_i[a, p, i] for i in range(4)) <= Ua_b_p[a, b, p] + 1, name=f"Restriccion12_4_{a}_{b}_{p}")
+            model.addConstr(Wa_b[a, b] + gp.quicksum(Ha_p_i[a, p, i] for i in range(0, 4)) <= Ua_b_p[a, b, p] + 1, name=f"Restriccion12_4_{a}_{b}_{p}")
 
 # 13. Asegurar que al menos un L% de los profesores con preferencia sean asignados a un auto que vaya a un bloque preferido
 #for b in B:
