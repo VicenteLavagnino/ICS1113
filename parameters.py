@@ -47,7 +47,7 @@ Qb_r = {(i, j): int(q_profesor_ramo.iat[i, j]) for i in B for j in R}
 Vp = {i: int(tiene_preferencia_profesores.iat[i, 0]) for i in P}
 
 # Parámetro adicional
-L = 0.0
+L = 0.8
 
 # Exportar conjuntos y parámetros
 def get_data():
