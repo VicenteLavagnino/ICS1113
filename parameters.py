@@ -1,13 +1,13 @@
 import pandas as pd
 
 # Leer datos desde archivos CSV (sin headers)
-e_profesor_profesor = pd.read_csv('E-profesor-profesor.csv', header=None)
-j_profesor_bloque = pd.read_csv('J-profesor-bloque.csv', header=None)
-postulaciones_profesores_ramos = pd.read_csv('postulaciones_profesores_ramos.csv', header=None)
-preferencias_profesores_bloques = pd.read_csv('preferencias_profesores_bloques.csv', header=None)
-puede_manejar_profesores = pd.read_csv('puede_manejar_profesores.csv', header=None)
-q_profesor_ramo = pd.read_csv('Q-profesor-ramo.csv', header=None)
-tiene_preferencia_profesores = pd.read_csv('tiene_preferencia_profesores.csv', header=None)
+e_profesor_profesor = pd.read_csv('source/seeds/E-profesor-profesor.csv', header=None)
+j_profesor_bloque = pd.read_csv('source/seeds/J-profesor-bloque.csv', header=None)
+postulaciones_profesores_ramos = pd.read_csv('source/seeds/postulaciones_profesores_ramos.csv', header=None)
+preferencias_profesores_bloques = pd.read_csv('source/seeds/preferencias_profesores_bloques.csv', header=None)
+puede_manejar_profesores = pd.read_csv('source/seeds/puede_manejar_profesores.csv', header=None)
+q_profesor_ramo = pd.read_csv('source/seeds/Q-profesor-ramo.csv', header=None)
+tiene_preferencia_profesores = pd.read_csv('source/seeds/tiene_preferencia_profesores.csv', header=None)
 
 # Crear conjuntos
 A = list(range(len(puede_manejar_profesores)))
