@@ -30,8 +30,11 @@ puede_manejar_profesores.fillna(0, inplace=True)
 q_profesor_ramo.fillna(0, inplace=True)
 tiene_preferencia_profesores.fillna(0, inplace=True)
 
+# Contar el número de profesores que pueden manejar
+n_a = puede_manejar_profesores.sum()[0]
+
 # Crear conjuntos
-A = list(range(len(puede_manejar_profesores)))
+A = list(range(n_a))
 P = list(range(len(j_profesor_bloque)))
 B = list(range(len(j_profesor_bloque.columns)))
 R = list(range(len(q_profesor_ramo.columns)))
