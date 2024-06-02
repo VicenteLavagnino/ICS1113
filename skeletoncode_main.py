@@ -81,7 +81,7 @@ for b in B:
 for a in A:
     for p1 in P:
         for p2 in P:
-            for i in range(4):
+            for i in range(1, 4):
                 model.addConstr(Sa_p1_p2_i[a, p1, p2, i] <= Ta_p_i[a, p1, i], name=f"Restriccion10_1_{a}_{p1}_{p2}_{i}")
                 model.addConstr(Sa_p1_p2_i[a, p1, p2, i] <= Ta_p_i[a, p2, i+1], name=f"Restriccion10_2_{a}_{p1}_{p2}_{i}")
                 model.addConstr(Ta_p_i[a, p1, i] + Ta_p_i[a, p2, i+1] <= 1 + Sa_p1_p2_i[a, p1, p2, i], name=f"Restriccion10_3_{a}_{p1}_{p2}_{i}")
