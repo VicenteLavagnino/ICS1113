@@ -89,7 +89,7 @@ for a in A:
 # 11. Definición de la variable Ha_p_i
 for a in A:
     for p in P:
-        for i in range(4):
+        for i in range(0, 4):
             model.addConstr(Ha_p_i[a, p, i] <= Ta_p_i[a, p, i], name=f"Restriccion11_1_{a}_{p}_{i}")
             model.addConstr(Ha_p_i[a, p, i] <= 1 - gp.quicksum(Ta_p_i[a, p2, i+1] for p2 in P), name=f"Restriccion11_2_{a}_{p}_{i}")
             model.addConstr(Ta_p_i[a, p, i] - gp.quicksum(Ta_p_i[a, p2, i+1] for p2 in P) <= Ha_p_i[a, p, i], name=f"Restriccion11_3_{a}_{p}_{i}")
