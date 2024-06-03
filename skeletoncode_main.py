@@ -8,6 +8,7 @@ A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = get_data()
 
 # Crear el modelo
 model = gp.Model("Fundacion_Atrevete")
+model.setParam("TimeLimit", 5000)  # Límite de tiempo de ejecución en segundos
 
 # Variables de decisión
 Xa = model.addVars(A, vtype=GRB.BINARY, name="Xa")
@@ -52,11 +53,11 @@ for a in A:
 
 # 6. Cada profesor es asignado a un solo auto y a un solo asiento de este
 for p in P:
-    model.addConstr(gp.quicksum(Ta_p_i[a, p, i] for a in A for i in I) == 1, name=f"Restriccion6_{p}")
+    model.addConstr(gp.quicksum(Ta_p_i[a, p, i] for a in A for i in I) <= 1, name=f"Restriccion6_{p}")
 
 # 7. A cada profesor se le asigna un solo ramo
 for p in P:
-    model.addConstr(gp.quicksum(Yp_r[p, r] for r in R) == 1, name=f"Restriccion7_{p}")
+    model.addConstr(gp.quicksum(Yp_r[p, r] for r in R) <= 1, name=f"Restriccion7_{p}")
 
 # 8. El ramo al cual el profesor sea asignado debe ser uno de los ramos a los que postuló
 for p in P:
@@ -113,6 +114,7 @@ for a in A:
 
 # Optimizar el modelo
 model.optimize()
+
 
 # Verificar factibilidad del modelo y manejar la inviabilidad
 if model.status == GRB.INFEASIBLE:
