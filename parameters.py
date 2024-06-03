@@ -19,29 +19,6 @@ puede_manejar_profesores = pd.read_csv('source/maneja.csv', header=None)
 #q_profesor_ramo = pd.read_csv('source/seeds/Q-profesor-ramo.csv', header=0, index_col=0)
 q_profesor_ramo = pd.read_csv('source/requisitos_bloque.csv', header=None)
 
-tiene_preferencia_profesores = pd.read_csv('source/seeds/tiene_preferencia_profesores.csv', header=0, index_col=0)
-
-# Verificar que no haya valores NaN en los datos de entrada
-'''
-print(e_profesor_profesor.isna().sum())
-print(j_profesor_bloque.isna().sum())
-print(postulaciones_profesores_ramos.isna().sum())
-print(preferencias_profesores_bloques.isna().sum())
-print(puede_manejar_profesores.isna().sum())
-print(q_profesor_ramo.isna().sum())
-print(tiene_preferencia_profesores.isna().sum())
-'''
-
-
-# Rellenar NaN con un valor específico (e.g., 0)
-e_profesor_profesor.fillna(0, inplace=True)
-j_profesor_bloque.fillna(0, inplace=True)
-postulaciones_profesores_ramos.fillna(0, inplace=True)
-preferencias_profesores_bloques.fillna(0, inplace=True)
-puede_manejar_profesores.fillna(0, inplace=True)
-q_profesor_ramo.fillna(0, inplace=True)
-tiene_preferencia_profesores.fillna(0, inplace=True)
-
 # Contar el número de profesores que pueden manejar
 n_a = puede_manejar_profesores.sum()[0]
 
@@ -56,16 +33,17 @@ I = [0, 1, 2, 3, 4]
 Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j]) for i in P for j in P}
 Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j]) for i in P for j in B}
 Dp_r = {(i, j): int(postulaciones_profesores_ramos.iat[i, j]) for i in P for j in R}
-#Dp_r = {(i, j): 1 for i in P for j in R}
 
-#Fp_b = {(i, j): int(preferencias_profesores_bloques.iat[i, j]) for i in P for j in B}
-Fp_b = {(i, j): 1 for i in P for j in B}
+Fp_b = {(i, j): int(preferencias_profesores_bloques.iat[i, j]) for i in P for j in B}
+#Fp_b = {(i, j): 1 for i in P for j in B}
 Mp = {i: int(puede_manejar_profesores.iat[i, 0]) for i in P}
 Qb_r = {(i, j): int(q_profesor_ramo.iat[i, j]) for i in B for j in R}
-Vp = {i: int(tiene_preferencia_profesores.iat[i, 0]) for i in P}
+
+# Tiene preferencia es ver si para cada profesor, tiene alguna preferencia (es tupla, es la suma)
+Vp = {i: sum(Fp_b[(i, j)] for j in B) for i in P}
 
 # Parámetro adicional
-L = 0.0
+L = 1
 
 # Exportar conjuntos y parámetros
 def get_data():
