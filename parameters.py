@@ -33,7 +33,14 @@ def get_data(csv_type):
         q_profesor_ramo = pd.read_csv('source/medium/nuevo_Q.csv', header=None)
     
     elif csv_type == "big":
-        pass
+
+        # MEDIANOS
+        e_profesor_profesor = pd.read_csv('source/big/nuevo_E.csv', header=None)
+        j_profesor_bloque = pd.read_csv('source/big/nuevo_J.csv', header=None)
+        postulaciones_profesores_ramos = pd.read_csv('source/big/nuevo_D.csv', header=None)
+        preferencias_profesores_bloques = pd.read_csv('source/big/nuevo_F.csv', header=None)
+        puede_manejar_profesores = pd.read_csv('source/big/nuevo_M.csv', header=None)
+        q_profesor_ramo = pd.read_csv('source/big/nuevo_Q.csv', header=None)
 
     # COMPARTIDO -----------------------
     
