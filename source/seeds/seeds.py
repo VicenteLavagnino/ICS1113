@@ -4,7 +4,7 @@ import numpy as np
 # Definiciones
 ramos = ["Matemáticas", "Lenguaje", "Biología", "Física", "Química", "Historia"]
 bloques = ["Bloque 1", "Bloque 2", "Bloque 3", "Bloque 4"]
-n = 116  # Número de profesores
+n = 104  # Número de profesores
 profesores = [f"Profesor {i+1}" for i in range(n)]
 
 
