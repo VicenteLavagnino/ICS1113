@@ -8,7 +8,7 @@ A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = get_data()
 
 # Crear el modelo
 model = gp.Model("Fundacion_Atrevete")
-model.setParam("TimeLimit", 1800)  # Límite de tiempo de ejecución en segundos
+model.setParam("TimeLimit", 1800)  # Límite de tiempo de ejecución en 30 minutos
 
 # Variables de decisión
 Yp_r = model.addVars(P, R, vtype=GRB.BINARY, name="Yp_r")
