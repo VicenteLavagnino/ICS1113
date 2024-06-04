@@ -54,11 +54,11 @@ def generate_model(PARAMETERS):
 
     # 5. Cada profesor es asignado a un solo auto y a un solo asiento de este
     for p in P:
-        model.addConstr(gp.quicksum(Ta_p_i[a, p, i] for a in A for i in I) <= 1, name=f"Restriccion5_{p}")
+        model.addConstr(gp.quicksum(Ta_p_i[a, p, i] for a in A for i in I) == 1, name=f"Restriccion5_{p}")
 
     # 6. A cada profesor se le asigna un solo ramo
     for p in P:
-        model.addConstr(gp.quicksum(Yp_r[p, r] for r in R) <= 1, name=f"Restriccion6_{p}")
+        model.addConstr(gp.quicksum(Yp_r[p, r] for r in R) == 1, name=f"Restriccion6_{p}")
 
     # 7. El ramo al cual el profesor sea asignado debe ser uno de los ramos a los que postuló
     for p in P:
