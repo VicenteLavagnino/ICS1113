@@ -2,6 +2,8 @@
 
 Repositorio del Grupo 31 para el curso Optimización ICS1113 2024-1 
 
+## HINT: Se recomienda usar BBDD small
+
 ## Integrantes
 - Sebastián Silva
 - Sebastián Plaza
@@ -51,6 +53,15 @@ Ubicándonos en la raíz de nuestro directorio
 python3 main.py
 ```
 
+### Ejecución seeds
+
+Ubicándonos en la raíz de nuestro directorio
+
+```bash
+cd source/seeds
+python3 seeds.py
+```
+
 ## Estructura del código
 
 ```bash
@@ -59,13 +70,15 @@ python3 main.py
 ├── main.py # Script principal que ejecuta el modelo de optimización.
 ├── model.py # Script donde se instancia el modelo de optimización.
 ├── parameters.py # Script donde se instancian los parámetros necesarios para el modelo.
-├── helpers.py # Scripts auxiliares con funciones adicionales.
 │
 ├── source/
-│ └── datos.csv # Datos necesarios para ejecutar el modelo.
+│ └── big/  # Datos necesarios para ejecutar el modelo con una base de datos grande.
+│ └── medium/ # Datos necesarios para ejecutar el modelo con una base de datos mediana.
+│ └── small/ # Datos necesarios para ejecutar el modelo con una base de datos pequeña.
+│ └── seeds/ # Datos necesarios para ejecutar el modelo con una base de datos aletoria con N = 104 y generador seeds.py.
 │
 ├── output/
-│ └── AAAAA.csv # Archivo de salida con resultados (nombre genérico, reemplaza según necesidad).
+│ └── resultado.txt # Archivo de salida con resultados.
 │
 ├── requirements.txt # Dependencias del proyecto.
 └── README.md # Documentación del proyecto.
