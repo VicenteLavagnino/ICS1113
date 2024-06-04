@@ -121,9 +121,9 @@ def generate_model(PARAMETERS):
     if model.status == GRB.INFEASIBLE:
         print("El modelo es inviable. Calculando IIS para diagnosticar...")
         model.computeIIS()
-        model.write("model.ilp")  # Exportar el modelo a un archivo para análisis
+        model.write("output/model.ilp")  # Exportar el modelo a un archivo para análisis
 
-        with open("infeasibility_report.txt", "w") as f:
+        with open("output/infeasibility_report.txt", "w") as f:
             f.write("IIS Report:\n")
             for c in model.getConstrs():
                 if c.IISConstr:
@@ -132,14 +132,20 @@ def generate_model(PARAMETERS):
         if model.status == GRB.OPTIMAL:
             print("Solución óptima encontrada.")
             # Guardar resultados en un archivo
-            results = []
+            result = []
             for a in A:
-                for p in P:
-                    for i in I:
-                        if Ta_p_i[a, p, i].X > 0.5:
-                            results.append((a, p, i, Ta_p_i[a, p, i].X))
-            df_results = pd.DataFrame(results, columns=["Auto", "Profesor", "Asiento", "Asignado"])
-            df_results.to_csv("resultados.csv", index=False)
+                for b in B:
+                    for p in P:
+                        for r in R:
+                            for i in I:
+                                if Za_b_p_r[a, b, p, r].X > 0.5 and Ta_p_i[a, p, i].X > 0.5:
+                                    result.append(f"El profesor {p} se subirá al auto {a} en el asiento {i} y se dirigirá al bloque {b} para realizar la clase {r}.")
+
+            result.append(f"Valor objetivo: {model.objVal}")
+            archivo_resultado = open("output/resultado.txt", "w")
+            for linea in result:
+                archivo_resultado.write(linea + "\n")
+            archivo_resultado.close()
         else:
             print("No se encontró una solución óptima o el estado del modelo no es óptimo.")
 

@@ -1,4 +1,6 @@
 .vscode
 .DS_Store
 __pycache__
-resultados.csv
+output/resultado.txt
+output/infeasibility_report.txt
+output/model.ilp
