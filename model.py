@@ -11,9 +11,6 @@ def generate_model(PARAMETERS):
 
     # Cargar datos desde parameters.py
     A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = PARAMETERS
-
-    for i in PARAMETERS:
-        print(i)
     
     model = gp.Model("Fundacion_Atrevete")
     model.setParam("TimeLimit", 1800)  # Límite de tiempo de ejecución en 30 minutos
