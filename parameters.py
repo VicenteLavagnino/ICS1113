@@ -1,23 +1,29 @@
 import pandas as pd
 
-# Leer datos desde archivos CSV
+# MEDIANOS
+e_profesor_profesor = pd.read_csv('source/medium/nuevo_E.csv', header=None)
+j_profesor_bloque = pd.read_csv('source/medium/nuevo_J.csv', header=None)
+postulaciones_profesores_ramos = pd.read_csv('source/medium/nuevo_D.csv', header=None)
+preferencias_profesores_bloques = pd.read_csv('source/medium/nuevo_F.csv', header=None)
+puede_manejar_profesores = pd.read_csv('source/medium/nuevo_M.csv', header=None)
+q_profesor_ramo = pd.read_csv('source/medium/nuevo_Q.csv', header=None)
+
+# PEQUEÑOS
+#e_profesor_profesor = pd.read_csv('source/distancias_entre_profes.csv', header=None)
+#j_profesor_bloque = pd.read_csv('source/distancias_profe_colegio.csv', header=None)
+#postulaciones_profesores_ramos = pd.read_csv('source/ramos_postulados.csv', header=None)
+#preferencias_profesores_bloques = pd.read_csv('source/preferencias_bloque.csv', header=None)
+#puede_manejar_profesores = pd.read_csv('source/maneja.csv', header=None)
+#q_profesor_ramo = pd.read_csv('source/requisitos_bloque.csv', header=None)
+
+
+# GRANDES
 #e_profesor_profesor = pd.read_csv('source/seeds/E-profesor-profesor.csv', header=0, index_col=0)
-e_profesor_profesor = pd.read_csv('source/distancias_entre_profes.csv', header=None)
-
 #j_profesor_bloque = pd.read_csv('source/seeds/J-profesor-bloque.csv', header=0, index_col=0)
-j_profesor_bloque = pd.read_csv('source/distancias_profe_colegio.csv', header=None)
-
 #postulaciones_profesores_ramos = pd.read_csv('source/seeds/postulaciones_profesores_ramos.csv', header=0, index_col=0)
-postulaciones_profesores_ramos = pd.read_csv('source/ramos_postulados.csv', header=None)
-
 #preferencias_profesores_bloques = pd.read_csv('source/seeds/preferencias_profesores_bloques.csv', header=0, index_col=0)
-preferencias_profesores_bloques = pd.read_csv('source/preferencias_bloque.csv', header=None)
-
 #puede_manejar_profesores = pd.read_csv('source/seeds/puede_manejar_profesores.csv', header=0, index_col=0)
-puede_manejar_profesores = pd.read_csv('source/maneja.csv', header=None)
-
 #q_profesor_ramo = pd.read_csv('source/seeds/Q-profesor-ramo.csv', header=0, index_col=0)
-q_profesor_ramo = pd.read_csv('source/requisitos_bloque.csv', header=None)
 
 # Contar el número de profesores que pueden manejar
 n_a = puede_manejar_profesores.sum()[0]

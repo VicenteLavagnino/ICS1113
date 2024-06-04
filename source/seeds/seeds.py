@@ -4,7 +4,7 @@ import numpy as np
 # Definiciones
 ramos = ["Matemáticas", "Lenguaje", "Biología", "Física", "Química", "Historia"]
 bloques = ["Bloque 1", "Bloque 2", "Bloque 3", "Bloque 4"]
-n = 116 # Número de profesores
+n = 116  # Número de profesores
 profesores = [f"Profesor {i+1}" for i in range(n)]
 
 
@@ -17,8 +17,8 @@ datos = np.random.randint(1, 5, size=(len(bloques), len(ramos)))  # Entre 1 y 4 
 # Crear el DataFrame
 df = pd.DataFrame(data=datos, index=bloques, columns=ramos)
 
-# Generar el archivo CSV
-df.to_csv("Q-profesor-ramo.csv", index=True)
+# Generar el archivo CSV sin etiquetas de filas y columnas
+df.to_csv("Q-profesor-ramo.csv", index=False, header=False)
 
 
 # ------ J[p,b] ------
@@ -30,8 +30,8 @@ distancias = np.random.randint(5, 30, size=(len(profesores), len(bloques)))  # D
 # Crear el DataFrame
 df_distancias = pd.DataFrame(data=distancias, index=profesores, columns=bloques)
 
-# Generar el archivo CSV
-df_distancias.to_csv("J-profesor-bloque.csv", index=True)
+# Generar el archivo CSV sin etiquetas de filas y columnas
+df_distancias.to_csv("J-profesor-bloque.csv", index=False, header=False)
 
 
 # ------ E[p1,p2] ------
@@ -51,8 +51,8 @@ for i in range(n):
 profesores = [f"Profesor {i+1}" for i in range(n)]
 df_distancias = pd.DataFrame(data=distancias, index=profesores, columns=profesores)
 
-# Generar el archivo CSV
-df_distancias.to_csv("E-profesor-profesor.csv", index=True)
+# Generar el archivo CSV sin etiquetas de filas y columnas
+df_distancias.to_csv("E-profesor-profesor.csv", index=False, header=False)
 
 
 # ------ D[p,r] ------
@@ -65,8 +65,8 @@ postulaciones = np.random.randint(0, 2, size=(n, len(ramos)))
 profesores = [f"Profesor {i+1}" for i in range(n)]
 df_postulaciones = pd.DataFrame(data=postulaciones, index=profesores, columns=ramos)
 
-# Generar el archivo CSV
-df_postulaciones.to_csv("postulaciones_profesores_ramos.csv", index=True)
+# Generar el archivo CSV sin etiquetas de filas y columnas
+df_postulaciones.to_csv("postulaciones_profesores_ramos.csv", index=False, header=False)
 
 
 # ------ M[p] ------
@@ -79,8 +79,8 @@ puede_manejar = np.random.randint(0, 2, size=(n, 1))
 profesores = [f"Profesor {i+1}" for i in range(n)]
 df_puede_manejar = pd.DataFrame(data=puede_manejar, index=profesores, columns=["Puede Manejar"])
 
-# Generar el archivo CSV
-df_puede_manejar.to_csv("puede_manejar_profesores.csv", index=True)
+# Generar el archivo CSV sin etiquetas de filas y columnas
+df_puede_manejar.to_csv("puede_manejar_profesores.csv", index=False, header=False)
 
 
 # ------ F[p, b] ------
@@ -93,20 +93,8 @@ preferencias = np.random.randint(0, 2, size=(n, len(bloques)))
 profesores = [f"Profesor {i+1}" for i in range(n)]
 df_preferencias = pd.DataFrame(data=preferencias, index=profesores, columns=bloques)
 
-# Generar el archivo CSV
-df_preferencias.to_csv("preferencias_profesores_bloques.csv", index=True)
+# Generar el archivo CSV sin etiquetas de filas y columnas
+df_preferencias.to_csv("preferencias_profesores_bloques.csv", index=False, header=False)
 
 
-# ------ V[p] ------
-
-# Segun el parametro anterior:
-tiene_preferencia = (df_preferencias.sum(axis=1) > 0).astype(int)
-
-# Crear el DataFrame
-df_tiene_preferencia = pd.DataFrame(data=tiene_preferencia, columns=["Tiene Preferencia"])
-df_tiene_preferencia.index = df_preferencias.index  # Asegurando que los índices coincidan
-
-# Generar el archivo CSV
-df_tiene_preferencia.to_csv("tiene_preferencia_profesores.csv", index=True)
-
-print("Se han generado los archivos CSV necesarios para la semilla.")
+print("Se han generado los archivos CSV necesarios para la semilla sin etiquetas de filas y columnas.")
