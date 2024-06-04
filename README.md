@@ -2,7 +2,8 @@
 
 Repositorio del Grupo 31 para el curso Optimización ICS1113 2024-1 
 
-## HINT: Se recomienda usar BBDD small
+## HINT: 
+**Se recomienda usar BBDD small:** 
 
 ## Integrantes
 - Sebastián Silva
