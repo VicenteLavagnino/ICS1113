@@ -3,6 +3,7 @@
 # IMPORTAR
 from parameters import get_data
 from model import generate_model
+from plot import plot_solution
 
 
 if __name__ == '__main__':
@@ -41,3 +42,4 @@ if __name__ == '__main__':
 
     # GENERAR EL MODELO
     generate_model(parameters)
+    

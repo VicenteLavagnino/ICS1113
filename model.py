@@ -3,6 +3,7 @@ import gurobipy as gp
 from gurobipy import GRB
 import pandas as pd
 from parameters import get_data
+from plot import plot_solution
 
 
 #----------------------- Generacion del modelo ------------------------
@@ -13,7 +14,7 @@ def generate_model(PARAMETERS):
     A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = PARAMETERS
     
     model = gp.Model("Fundacion_Atrevete")
-    model.setParam("TimeLimit", 1800)  # Límite de tiempo de ejecución en 30 minutos
+    model.setParam("TimeLimit", 1000)  # Límite de tiempo de ejecución en 30 minutos
 
     #----------------------- Variables ------------------------
     Yp_r = model.addVars(P, R, vtype=GRB.BINARY, name="Yp_r")
@@ -139,11 +140,15 @@ def generate_model(PARAMETERS):
                                     result.append(f"El profesor {p} se subirá al auto {a} en el asiento {i} y se dirigirá al bloque {b} para realizar la clase {r}.")
 
             result.append(f"Valor objetivo: {model.objVal}")
+            result.append(f"Tiempo de ejecución: {model.Runtime}")
             archivo_resultado = open("output/resultado.txt", "w")
             for linea in result:
                 archivo_resultado.write(linea + "\n")
             archivo_resultado.close()
         else:
             print("No se encontró una solución óptima o el estado del modelo no es óptimo.")
+            print(f"Tiempo de ejecución: {model.Runtime}")
 
+    plot_solution()
+    
     return model

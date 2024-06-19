@@ -1,11 +1,12 @@
-El profesor 2 se subirá al auto 0 en el asiento 0 y se dirigirá al bloque 3 para realizar la clase 0.
-El profesor 6 se subirá al auto 0 en el asiento 1 y se dirigirá al bloque 3 para realizar la clase 1.
-El profesor 9 se subirá al auto 0 en el asiento 2 y se dirigirá al bloque 3 para realizar la clase 2.
-El profesor 7 se subirá al auto 1 en el asiento 1 y se dirigirá al bloque 1 para realizar la clase 2.
-El profesor 8 se subirá al auto 1 en el asiento 0 y se dirigirá al bloque 1 para realizar la clase 2.
-El profesor 0 se subirá al auto 4 en el asiento 0 y se dirigirá al bloque 2 para realizar la clase 0.
-El profesor 4 se subirá al auto 4 en el asiento 1 y se dirigirá al bloque 2 para realizar la clase 1.
-El profesor 1 se subirá al auto 5 en el asiento 2 y se dirigirá al bloque 0 para realizar la clase 0.
-El profesor 3 se subirá al auto 5 en el asiento 1 y se dirigirá al bloque 0 para realizar la clase 1.
-El profesor 5 se subirá al auto 5 en el asiento 0 y se dirigirá al bloque 0 para realizar la clase 0.
+El profesor 0 se subirá al auto 0 en el asiento 0 y se dirigirá al bloque 2 para realizar la clase 0.
+El profesor 4 se subirá al auto 0 en el asiento 1 y se dirigirá al bloque 2 para realizar la clase 1.
+El profesor 1 se subirá al auto 2 en el asiento 2 y se dirigirá al bloque 0 para realizar la clase 0.
+El profesor 3 se subirá al auto 2 en el asiento 1 y se dirigirá al bloque 0 para realizar la clase 1.
+El profesor 5 se subirá al auto 2 en el asiento 0 y se dirigirá al bloque 0 para realizar la clase 0.
+El profesor 7 se subirá al auto 4 en el asiento 1 y se dirigirá al bloque 1 para realizar la clase 2.
+El profesor 8 se subirá al auto 4 en el asiento 0 y se dirigirá al bloque 1 para realizar la clase 2.
+El profesor 2 se subirá al auto 6 en el asiento 0 y se dirigirá al bloque 3 para realizar la clase 0.
+El profesor 6 se subirá al auto 6 en el asiento 1 y se dirigirá al bloque 3 para realizar la clase 1.
+El profesor 9 se subirá al auto 6 en el asiento 2 y se dirigirá al bloque 3 para realizar la clase 2.
 Valor objetivo: 448.0
+Tiempo de ejecución: 39.11346101760864
