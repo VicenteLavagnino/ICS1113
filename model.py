@@ -3,6 +3,8 @@ import gurobipy as gp
 from gurobipy import GRB
 import pandas as pd
 from parameters import get_data
+from plot import plot_solution
+import os
 
 
 #----------------------- Generacion del modelo ------------------------
@@ -114,7 +116,19 @@ def generate_model(PARAMETERS):
 
 
     #----------------------- Solucion ------------------------
+    
+    # Eliminar resultados anteriores
+    if os.path.exists("output/resultado.txt"):
+        os.remove("output/resultado.txt")
+
+    if os.path.exists("output/model.ilp"):
+        os.remove("output/model.ilp")
+    
+    if os.path.exists("output/infeasibility_report.txt"):
+        os.remove("output/infeasibility_report.txt")
+
     # Verificar factibilidad del modelo y manejar la inviabilidad
+
     if model.status == GRB.INFEASIBLE:
         print("El modelo es inviable. Calculando IIS para diagnosticar...")
         model.computeIIS()
@@ -139,11 +153,16 @@ def generate_model(PARAMETERS):
                                     result.append(f"El profesor {p} se subirá al auto {a} en el asiento {i} y se dirigirá al bloque {b} para realizar la clase {r}.")
 
             result.append(f"Valor objetivo: {model.objVal}")
+            result.append(f"Tiempo de ejecución: {model.Runtime}")
             archivo_resultado = open("output/resultado.txt", "w")
             for linea in result:
                 archivo_resultado.write(linea + "\n")
             archivo_resultado.close()
         else:
             print("No se encontró una solución óptima o el estado del modelo no es óptimo.")
+            print(f"Tiempo de ejecución: {model.Runtime}")
 
+
+    plot_solution()
+    
     return model
