@@ -154,6 +154,7 @@ def generate_model(PARAMETERS):
 
             result.append(f"Valor objetivo: {model.objVal}")
             result.append(f"Tiempo de ejecución: {model.Runtime}")
+            result.append(f"Porcentaje mínimo de profesores asignados a bloques preferidos: {L}")
             archivo_resultado = open("output/resultado.txt", "w")
             for linea in result:
                 archivo_resultado.write(linea + "\n")
@@ -165,4 +166,4 @@ def generate_model(PARAMETERS):
 
     plot_solution()
     
-    return model
+    return None

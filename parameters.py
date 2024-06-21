@@ -63,10 +63,15 @@ def get_data(csv_type):
     Qb_r = {(i, j): int(q_profesor_ramo.iat[i, j]) for i in B for j in R}
 
     # Tiene preferencia es ver si para cada profesor tiene alguna preferencia (1 si tiene, 0 si no)
-    Vp = {i: sum(Fp_b[(i, j)] for j in B) for i in P}
+    Vp = {i: 1 if sum(Fp_b[(i, j)] for j in B) > 0 else 0 for i in P}
 
     # Parámetro adicional
-    L = 0
+    
+    L = float(input("Ingrese el porcentaje minímo de los profesores que serán asignados a alguno de sus bloques preferios, este valor debe estar entre 0 y 1: "))
+
+    if L < 0 or L > 1 or type(L) != float:
+        print("El valor ingresado no es válido")
+        exit()
 
     # Exporta los conjuntos
     return A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L
