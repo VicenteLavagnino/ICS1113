@@ -14,11 +14,11 @@ if __name__ == '__main__':
     print("-------------------------------------------------------------")
     print("          CHOOSE THE DATABASE THAT YOU WANT TO USE           ")
     print("                                                             ")
-    print("WE HAVE 4 DATABASES: seeds, small, medium and big. CHOOSE ONE")
+    print("WE HAVE 4 DATABASES: seeds, small, medium, big or real. CHOOSE ONE")
 
     print("-------------------------------------------------------------")
     print("                           HINT                              ")
-    print("    A MOTIVOS DE CORRECCION, SE RECOMIENDA USAR small        ")
+    print(" A MOTIVOS DE CORRECCION, SE RECOMIENDA USAR small o medium  ")
     print("-------------------------------------------------------------")
 
     BBDD = input("Write the DB that you want to use: ")
@@ -34,6 +34,9 @@ if __name__ == '__main__':
 
     elif BBDD == "big":
         parameters = get_data("big")
+
+    elif BBDD == "real":
+        parameters = get_data("real")
 
     else:
         print("                   ERROR: DATABASE NOT FOUND                 ")

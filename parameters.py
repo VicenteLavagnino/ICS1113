@@ -35,27 +35,13 @@ def get_data(csv_type):
         q_profesor_ramo = pd.read_csv(
             'source/small/requisitos_bloque.csv', header=None)
 
-    elif csv_type == "medium":
-
-        # MEDIANOS
-        e_profesor_profesor = pd.read_csv(
-            'source/medium/nuevo_E.csv', header=None)
-        j_profesor_bloque = pd.read_csv(
-            'source/medium/nuevo_J.csv', header=None)
-        postulaciones_profesores_ramos = pd.read_csv(
-            'source/medium/nuevo_D.csv', header=None)
-        preferencias_profesores_bloques = pd.read_csv(
-            'source/medium/nuevo_F.csv', header=None)
-        puede_manejar_profesores = pd.read_csv(
-            'source/medium/nuevo_M.csv', header=None)
-        q_profesor_ramo = pd.read_csv('source/medium/nuevo_Q.csv', header=None)
-
     elif csv_type == "big":
 
         # MEDIANOS
         e_profesor_profesor = pd.read_csv(
             'source/big/nuevo_E.csv', header=None)
-        j_profesor_bloque = pd.read_csv('source/big/nuevo_J.csv', header=None)
+        j_profesor_bloque = pd.read_csv(
+            'source/big/nuevo_J.csv', header=None)
         postulaciones_profesores_ramos = pd.read_csv(
             'source/big/nuevo_D.csv', header=None)
         preferencias_profesores_bloques = pd.read_csv(
@@ -63,6 +49,39 @@ def get_data(csv_type):
         puede_manejar_profesores = pd.read_csv(
             'source/big/nuevo_M.csv', header=None)
         q_profesor_ramo = pd.read_csv('source/big/nuevo_Q.csv', header=None)
+
+    elif csv_type == "medium":
+
+        # MEDIUM
+        e_profesor_profesor = pd.read_csv(
+            'source/medium/distancias_entre_profes.csv', header=None)
+        j_profesor_bloque = pd.read_csv(
+            'source/medium/distancias_profe_colegio.csv', header=None)
+        postulaciones_profesores_ramos = pd.read_csv(
+            'source/medium/ramos_postulados.csv', header=None)
+        preferencias_profesores_bloques = pd.read_csv(
+            'source/medium/preferencias_bloque.csv', header=None)
+        puede_manejar_profesores = pd.read_csv(
+            'source/medium/maneja.csv', header=None)
+        q_profesor_ramo = pd.read_csv(
+            'source/medium/requisitos_bloque.csv', header=None)
+
+    elif csv_type == "real":
+            
+        # REAL
+        e_profesor_profesor = pd.read_csv(
+            'source/real/distancias_entre_profes.csv', header=None)
+        j_profesor_bloque = pd.read_csv(
+            'source/real/distancias_profe_colegio.csv', header=None)
+        postulaciones_profesores_ramos = pd.read_csv(
+            'source/real/ramos_postulados.csv', header=None)
+        preferencias_profesores_bloques = pd.read_csv(
+            'source/real/preferencias_bloque.csv', header=None)
+        puede_manejar_profesores = pd.read_csv(
+            'source/real/maneja.csv', header=None)
+        q_profesor_ramo = pd.read_csv(
+            'source/real/requisitos_bloque.csv', header=None)
+
 
     # COMPARTIDO -----------------------
 
@@ -90,7 +109,6 @@ def get_data(csv_type):
     Vp = {i: 1 if sum(Fp_b[(i, j)] for j in B) > 0 else 0 for i in P}
 
     # Parámetro adicional
-    
     L = float(input("Ingrese el porcentaje minímo de los profesores que serán asignados a alguno de sus bloques preferios, este valor debe estar entre 0 y 1: "))
 
     if L < 0 or L > 1 or type(L) != float:
