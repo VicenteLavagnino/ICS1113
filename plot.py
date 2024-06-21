@@ -27,6 +27,12 @@ def plot_solution():
         elif linea.startswith("Valor objetivo:"):
             objective_value = float(linea.split()[2])
 
+        elif linea.startswith("Tiempo de ejecución:"):
+            runtime = float(linea.split()[3])
+
+        elif linea.startswith("Porcentaje mínimo de profesores asignados a bloques preferidos:"):
+            L = float(linea.split()[8])
+
 
 
     # Crear el gráfico
@@ -57,6 +63,8 @@ def plot_solution():
     plt.ylabel('Tipo de nodo')
     plt.yticks([0, 1, 2], ['Profesores', 'Autos', 'Bloques'])
     plt.title(f'Visualización \nValor objetivo: {objective_value}')
+    plt.subplots_adjust(bottom=0.2)
+    plt.figtext(0.5, 0.05, f'Tiempo de ejecución: {runtime} segundos\nPorcentaje mínimo de profesores asignados a bloques preferidos: {L}', ha="center", fontsize=10)
     plt.legend()
     plt.grid(True)
     plt.show()

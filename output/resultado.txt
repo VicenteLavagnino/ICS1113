@@ -1,12 +1,1 @@
-El profesor 7 se subir· al auto 0 en el asiento 1 y se dirigir· al bloque 1 para realizar la clase 2.
-El profesor 8 se subir· al auto 0 en el asiento 0 y se dirigir· al bloque 1 para realizar la clase 2.
-El profesor 1 se subir· al auto 2 en el asiento 2 y se dirigir· al bloque 0 para realizar la clase 0.
-El profesor 3 se subir· al auto 2 en el asiento 1 y se dirigir· al bloque 0 para realizar la clase 1.
-El profesor 5 se subir· al auto 2 en el asiento 0 y se dirigir· al bloque 0 para realizar la clase 0.
-El profesor 2 se subir· al auto 3 en el asiento 0 y se dirigir· al bloque 3 para realizar la clase 0.
-El profesor 6 se subir· al auto 3 en el asiento 1 y se dirigir· al bloque 3 para realizar la clase 1.
-El profesor 9 se subir· al auto 3 en el asiento 2 y se dirigir· al bloque 3 para realizar la clase 2.
-El profesor 0 se subir· al auto 6 en el asiento 0 y se dirigir· al bloque 2 para realizar la clase 0.
-El profesor 4 se subir· al auto 6 en el asiento 1 y se dirigir· al bloque 2 para realizar la clase 1.
-Valor objetivo: 448.0
-Tiempo de ejecuci√≥n: 10.986131191253662
+
