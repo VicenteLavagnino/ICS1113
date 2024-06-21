@@ -4,6 +4,7 @@ from gurobipy import GRB
 import pandas as pd
 from parameters import get_data
 from plot import plot_solution
+import os
 
 
 #----------------------- Generacion del modelo ------------------------
@@ -14,7 +15,7 @@ def generate_model(PARAMETERS):
     A, P, B, R, I, Ep1_p2, Jp_b, Dp_r, Fp_b, Mp, Qb_r, Vp, L = PARAMETERS
     
     model = gp.Model("Fundacion_Atrevete")
-    model.setParam("TimeLimit", 1000)  # Límite de tiempo de ejecución en 30 minutos
+    model.setParam("TimeLimit", 1800)  # Límite de tiempo de ejecución en 30 minutos
 
     #----------------------- Variables ------------------------
     Yp_r = model.addVars(P, R, vtype=GRB.BINARY, name="Yp_r")
@@ -115,7 +116,19 @@ def generate_model(PARAMETERS):
 
 
     #----------------------- Solucion ------------------------
+    
+    # Eliminar resultados anteriores
+    if os.path.exists("output/resultado.txt"):
+        os.remove("output/resultado.txt")
+
+    if os.path.exists("output/model.ilp"):
+        os.remove("output/model.ilp")
+    
+    if os.path.exists("output/infeasibility_report.txt"):
+        os.remove("output/infeasibility_report.txt")
+
     # Verificar factibilidad del modelo y manejar la inviabilidad
+
     if model.status == GRB.INFEASIBLE:
         print("El modelo es inviable. Calculando IIS para diagnosticar...")
         model.computeIIS()
@@ -148,6 +161,7 @@ def generate_model(PARAMETERS):
         else:
             print("No se encontró una solución óptima o el estado del modelo no es óptimo.")
             print(f"Tiempo de ejecución: {model.Runtime}")
+
 
     plot_solution()
     
