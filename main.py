@@ -23,10 +23,10 @@ if __name__ == '__main__':
     BBDD = input("Write the DB that you want to use: ")
 
     if BBDD == "seeds":
-       parameters = get_data("seeds")
+        parameters = get_data("seeds")
 
     elif BBDD == "small":
-        parameters = get_data("small")  
+        parameters = get_data("small")
 
     elif BBDD == "medium":
         parameters = get_data("medium")
