@@ -1,0 +1,19 @@
+El profesor 2 se subirá al auto 0 en el asiento 3 y se dirigirá al bloque 2 para realizar la clase 0.
+El profesor 6 se subirá al auto 0 en el asiento 2 y se dirigirá al bloque 2 para realizar la clase 2.
+El profesor 7 se subirá al auto 0 en el asiento 0 y se dirigirá al bloque 2 para realizar la clase 0.
+El profesor 13 se subirá al auto 0 en el asiento 1 y se dirigirá al bloque 2 para realizar la clase 3.
+El profesor 0 se subirá al auto 4 en el asiento 1 y se dirigirá al bloque 0 para realizar la clase 0.
+El profesor 3 se subirá al auto 4 en el asiento 0 y se dirigirá al bloque 0 para realizar la clase 1.
+El profesor 5 se subirá al auto 4 en el asiento 3 y se dirigirá al bloque 0 para realizar la clase 0.
+El profesor 10 se subirá al auto 4 en el asiento 2 y se dirigirá al bloque 0 para realizar la clase 1.
+El profesor 9 se subirá al auto 5 en el asiento 0 y se dirigirá al bloque 2 para realizar la clase 0.
+El profesor 14 se subirá al auto 5 en el asiento 1 y se dirigirá al bloque 2 para realizar la clase 4.
+El profesor 1 se subirá al auto 7 en el asiento 2 y se dirigirá al bloque 3 para realizar la clase 5.
+El profesor 11 se subirá al auto 7 en el asiento 3 y se dirigirá al bloque 3 para realizar la clase 1.
+El profesor 12 se subirá al auto 7 en el asiento 1 y se dirigirá al bloque 3 para realizar la clase 3.
+El profesor 15 se subirá al auto 7 en el asiento 0 y se dirigirá al bloque 3 para realizar la clase 1.
+El profesor 4 se subirá al auto 9 en el asiento 0 y se dirigirá al bloque 1 para realizar la clase 5.
+El profesor 8 se subirá al auto 9 en el asiento 1 y se dirigirá al bloque 1 para realizar la clase 5.
+Valor objetivo: 170391.82354477432
+Tiempo de ejecución: 287.0439910888672
+Porcentaje mínimo de profesores asignados a bloques preferidos: 1.0

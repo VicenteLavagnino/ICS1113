@@ -1,5 +1,6 @@
 import pandas as pd
-
+import random
+random.seed(0)
 
 def get_data(csv_type):
 
@@ -93,11 +94,27 @@ def get_data(csv_type):
     P = list(range(len(j_profesor_bloque)))
     B = list(range(len(j_profesor_bloque.columns)))
     R = list(range(len(q_profesor_ramo.columns)))
-    I = [0, 1, 2, 3, 4]
+
+    len_I = input("Ingrese el numero maximo de personas por auto (Se asume 5, inserte n >= 2 si desea cambiar ): ")
+
+    if len_I.isnumeric() and int(len_I) >= 2:
+        I = list(range(int(len_I)))
+
+    else:
+        I = list(range(5))
 
     # Crear parámetros
-    Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j]) for i in P for j in P}
-    Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j]) for i in P for j in B}
+
+    ruido = input("Desea agregar ruido a las distancias entre profesores? (Presione si para agregar ruido, cualquier otra tecla para continuar sin ruido): ")
+
+    if ruido == "si":
+        Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j])*random.uniform(0.8, 1.3) for i in P for j in P}
+        Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j])*random.uniform(0.8, 1.3) for i in P for j in B}
+
+    else:
+        Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j]) for i in P for j in P}
+        Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j]) for i in P for j in B}
+
     Dp_r = {(i, j): int(
         postulaciones_profesores_ramos.iat[i, j]) for i in P for j in R}
     Fp_b = {(i, j): int(
@@ -109,7 +126,7 @@ def get_data(csv_type):
     Vp = {i: 1 if sum(Fp_b[(i, j)] for j in B) > 0 else 0 for i in P}
 
     # Parámetro adicional
-    L = float(input("Ingrese el porcentaje minímo de los profesores que serán asignados a alguno de sus bloques preferios, este valor debe estar entre 0 y 1: "))
+    L = float(input("Ingrese el porcentaje mínimo de los profesores que serán asignados a alguno de sus bloques preferidos, este valor debe estar entre 0 y 1: "))
 
     if L < 0 or L > 1 or type(L) != float:
         print("El valor ingresado no es válido")

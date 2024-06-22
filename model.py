@@ -16,6 +16,7 @@ def generate_model(PARAMETERS):
     
     model = gp.Model("Fundacion_Atrevete")
     model.setParam("TimeLimit", 1800)  # Límite de tiempo de ejecución en 30 minutos
+    # model.setParam("MIPGap", 0.1)  # descomentar para establecer una brecha del 10% en caso de ser necesario
 
     #----------------------- Variables ------------------------
     Yp_r = model.addVars(P, R, vtype=GRB.BINARY, name="Yp_r")
@@ -163,6 +164,22 @@ def generate_model(PARAMETERS):
             print("No se encontró una solución óptima o el estado del modelo no es óptimo.")
             print(f"Tiempo de ejecución: {model.Runtime}")
 
+            result = []
+            for a in A:
+                for b in B:
+                    for p in P:
+                        for r in R:
+                            for i in I:
+                                if Za_b_p_r[a, b, p, r].X > 0.5 and Ta_p_i[a, p, i].X > 0.5:
+                                    result.append(f"El profesor {p} se subirá al auto {a} en el asiento {i} y se dirigirá al bloque {b} para realizar la clase {r}.")
+
+            result.append(f"Valor objetivo: {model.objVal}")
+            result.append(f"Tiempo de ejecución: {model.Runtime}")
+            result.append(f"Porcentaje mínimo de profesores asignados a bloques preferidos: {L}")
+            archivo_resultado = open("output/resultado.txt", "w")
+            for linea in result:
+                archivo_resultado.write(linea + "\n")
+            archivo_resultado.close()
 
     plot_solution()
     
