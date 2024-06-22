@@ -76,6 +76,7 @@ python3 seeds.py
 │ └── big/  # Datos necesarios para ejecutar el modelo con una base de datos grande.
 │ └── medium/ # Datos necesarios para ejecutar el modelo con una base de datos mediana.
 │ └── small/ # Datos necesarios para ejecutar el modelo con una base de datos pequeña.
+│ └── real/ # Datos necesarios para ejecutar el modelo con una base de datos real.
 │ └── seeds/ # Datos necesarios para ejecutar el modelo con una base de datos aletoria con N = 104 y generador seeds.py.
 │
 ├── output/
