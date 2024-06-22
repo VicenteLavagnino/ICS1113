@@ -1,5 +1,6 @@
 import pandas as pd
-
+import random
+random.seed(0)
 
 def get_data(csv_type):
 
@@ -35,27 +36,13 @@ def get_data(csv_type):
         q_profesor_ramo = pd.read_csv(
             'source/small/requisitos_bloque.csv', header=None)
 
-    elif csv_type == "medium":
-
-        # MEDIANOS
-        e_profesor_profesor = pd.read_csv(
-            'source/medium/nuevo_E.csv', header=None)
-        j_profesor_bloque = pd.read_csv(
-            'source/medium/nuevo_J.csv', header=None)
-        postulaciones_profesores_ramos = pd.read_csv(
-            'source/medium/nuevo_D.csv', header=None)
-        preferencias_profesores_bloques = pd.read_csv(
-            'source/medium/nuevo_F.csv', header=None)
-        puede_manejar_profesores = pd.read_csv(
-            'source/medium/nuevo_M.csv', header=None)
-        q_profesor_ramo = pd.read_csv('source/medium/nuevo_Q.csv', header=None)
-
     elif csv_type == "big":
 
         # MEDIANOS
         e_profesor_profesor = pd.read_csv(
             'source/big/nuevo_E.csv', header=None)
-        j_profesor_bloque = pd.read_csv('source/big/nuevo_J.csv', header=None)
+        j_profesor_bloque = pd.read_csv(
+            'source/big/nuevo_J.csv', header=None)
         postulaciones_profesores_ramos = pd.read_csv(
             'source/big/nuevo_D.csv', header=None)
         preferencias_profesores_bloques = pd.read_csv(
@@ -63,6 +50,39 @@ def get_data(csv_type):
         puede_manejar_profesores = pd.read_csv(
             'source/big/nuevo_M.csv', header=None)
         q_profesor_ramo = pd.read_csv('source/big/nuevo_Q.csv', header=None)
+
+    elif csv_type == "medium":
+
+        # MEDIUM
+        e_profesor_profesor = pd.read_csv(
+            'source/medium/distancias_entre_profes.csv', header=None)
+        j_profesor_bloque = pd.read_csv(
+            'source/medium/distancias_profe_colegio.csv', header=None)
+        postulaciones_profesores_ramos = pd.read_csv(
+            'source/medium/ramos_postulados.csv', header=None)
+        preferencias_profesores_bloques = pd.read_csv(
+            'source/medium/preferencias_bloque.csv', header=None)
+        puede_manejar_profesores = pd.read_csv(
+            'source/medium/maneja.csv', header=None)
+        q_profesor_ramo = pd.read_csv(
+            'source/medium/requisitos_bloque.csv', header=None)
+
+    elif csv_type == "real":
+            
+        # REAL
+        e_profesor_profesor = pd.read_csv(
+            'source/real/distancias_entre_profes.csv', header=None)
+        j_profesor_bloque = pd.read_csv(
+            'source/real/distancias_profe_colegio.csv', header=None)
+        postulaciones_profesores_ramos = pd.read_csv(
+            'source/real/ramos_postulados.csv', header=None)
+        preferencias_profesores_bloques = pd.read_csv(
+            'source/real/preferencias_bloque.csv', header=None)
+        puede_manejar_profesores = pd.read_csv(
+            'source/real/maneja.csv', header=None)
+        q_profesor_ramo = pd.read_csv(
+            'source/real/requisitos_bloque.csv', header=None)
+
 
     # COMPARTIDO -----------------------
 
@@ -74,11 +94,27 @@ def get_data(csv_type):
     P = list(range(len(j_profesor_bloque)))
     B = list(range(len(j_profesor_bloque.columns)))
     R = list(range(len(q_profesor_ramo.columns)))
-    I = [0, 1, 2, 3, 4]
+
+    len_I = input("Ingrese el numero maximo de personas por auto (Se asume 5, inserte n >= 2 si desea cambiar ): ")
+
+    if len_I.isnumeric() and int(len_I) >= 2:
+        I = list(range(int(len_I)))
+
+    else:
+        I = list(range(5))
 
     # Crear parámetros
-    Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j]) for i in P for j in P}
-    Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j]) for i in P for j in B}
+
+    ruido = input("Desea agregar ruido a las distancias entre profesores? (Presione si para agregar ruido, cualquier otra tecla para continuar sin ruido): ")
+
+    if ruido == "si":
+        Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j])*random.uniform(0.8, 1.3) for i in P for j in P}
+        Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j])*random.uniform(0.8, 1.3) for i in P for j in B}
+
+    else:
+        Ep1_p2 = {(i, j): int(e_profesor_profesor.iat[i, j]) for i in P for j in P}
+        Jp_b = {(i, j): int(j_profesor_bloque.iat[i, j]) for i in P for j in B}
+
     Dp_r = {(i, j): int(
         postulaciones_profesores_ramos.iat[i, j]) for i in P for j in R}
     Fp_b = {(i, j): int(
@@ -90,8 +126,7 @@ def get_data(csv_type):
     Vp = {i: 1 if sum(Fp_b[(i, j)] for j in B) > 0 else 0 for i in P}
 
     # Parámetro adicional
-    
-    L = float(input("Ingrese el porcentaje minímo de los profesores que serán asignados a alguno de sus bloques preferios, este valor debe estar entre 0 y 1: "))
+    L = float(input("Ingrese el porcentaje mínimo de los profesores que serán asignados a alguno de sus bloques preferidos, este valor debe estar entre 0 y 1: "))
 
     if L < 0 or L > 1 or type(L) != float:
         print("El valor ingresado no es válido")
